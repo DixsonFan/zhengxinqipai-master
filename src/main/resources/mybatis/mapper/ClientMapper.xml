@@ -1,0 +1,44 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.ClientMapper">
+
+    <resultMap id="clientMap" type="TClient">
+        <id property="cid" column="c_id"></id>
+        <result property="EId" column="e_id" ></result>
+        <result property="cname" column="c_name" ></result>
+        <result property="ctel" column="c_tel" ></result>
+        <result property="caddress" column="c_address" ></result>
+        <result property="cis" column="c_is" ></result>
+    </resultMap>
+
+    <select id="queryAllClient" resultMap="clientMap">
+    select * from t_client
+    </select>
+
+    <update id="deleteClient" parameterType="int">
+      update t_client set c_is=0 where c_id=#{cid}
+    </update>
+
+    <update id="updateClient" parameterType="TClient">
+        update t_client set e_id=#{EId},c_name=#{cname},c_tel =#{ctel},c_address=#{caddress},c_is=#{cis} where  c_id=#{cid}
+    </update>
+
+    <insert id="addClient" parameterType="TClient">
+        insert into t_client(e_id,c_name, c_tel,c_address, c_is) values(#{EId},#{cname},#{ctel},#{caddress}, #{cis})
+     </insert>
+
+
+    <select id="getClientById" parameterType="int" resultType="TClient">
+    select * from t_client where c_id=#{cid}
+    </select>
+
+    <select id="queryDelClient"  resultMap="clientMap">
+    select * from t_client where c_is=0;
+    </select>
+
+    <update id="recoverClient" parameterType="int">
+      update t_client set c_is=1 where c_id=#{cid}
+    </update>
+</mapper>

@@ -1,0 +1,47 @@
+.head{
+				height: 120px;
+				background-color: lightblue;
+				border: 0px solid black;
+		}
+			.head-right{
+				left: 450px;
+				top:50px;
+				position: absolute;
+				height:70px;
+				border: 0px solid red;
+			}
+			.head-right ul li{
+				list-style: none;
+				float: left;
+				height: 70px;
+				margin: 0 20px;
+				text-align: center;
+				line-height: 70px;
+			}
+			.head-right ul li a{
+				text-decoration: none;
+				color: white;
+				font-weight: bold;
+				font-size: 20px;
+			}
+			.head-right ul li a:hover{
+				color: cadetblue;
+			}
+			.container-fluid{
+				position :relative;
+			}
+
+			.right{
+				position: absolute;
+				top: 0px;
+				left: 230px;
+				height:500px;
+				border: 0px solid black;
+			}
+			#main-nav{
+				background-color: ghostwhite;
+			}
+			#left1,#left2,#left3,#left4,#left5,#left6,#left7
+			{
+				background-color:  white;
+			}

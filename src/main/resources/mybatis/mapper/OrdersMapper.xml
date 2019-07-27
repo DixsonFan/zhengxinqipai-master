@@ -1,0 +1,31 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.OrdersMapper">
+
+    <resultMap id="ordersMap" type="TOrders">
+        <id property="rid" column="r_id"></id>
+        <result property="EId" column="e_id" ></result>
+        <result property="CId" column="c_id" ></result>
+        <result property="rtime" column="r_time" ></result>
+        <result property="ris" column="r_is" ></result>
+  </resultMap>
+
+    <select id="queryAllOrders" resultMap="ordersMap">
+    select * from t_orders
+    </select>
+
+
+    <update id="deleteOrders" parameterType="int">
+      update t_orders set r_is=0 where r_id=#{rid}
+    </update>
+
+    <update id="updateOrders" parameterType="TOrders">
+        update t_orders set e_id=#{EId},c_id=#{CId},r_time=#{rtime},r_is=#{ris} where  r_id=#{rid}
+    </update>
+
+    <insert id="addOrders" parameterType="TOrders">
+        insert into t_orders(r_time, r_is) values(#{rtime}, #{ris})
+     </insert>
+</mapper>

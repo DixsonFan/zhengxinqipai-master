@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TInproductMapper">
+    <resultMap id="tInproductMap" type="TInproduct">
+        <id property="DId" column="d_id"></id>
+        <result property="DTime" column="d_time"></result>
+    </resultMap>
+
+    <select id="queryTInproductAll" resultMap="tInproductMap">
+        select * from t_inproduct
+    </select>
+
+    <delete id="deleteTInproduct" parameterType="int">
+        delete  from t_inproduct where DId = #{d_id}
+    </delete>
+
+    <select id="getTInproductById" parameterType="int" resultMap="tInproductMap">
+        select * from t_inproduct where DId = #{d_id};
+    </select>
+
+    <update id="updateTInproduct" parameterType="TInproduct">
+        update t_inproduct set p_id=#{PId},e_id=#{EId},d_remark=#{DRemark},
+                                d_integer=#{DInteger},d_time=#{DTime}
+        where DId = #{d_id}
+    </update>
+
+    <insert id="addTInproduct" parameterType="TInproduct">
+        insert into t_inproduct(p_id,e_id,d_remark,d_integer,d_time) values(#{PId}, #{EId}, #{DRemark}, #{DInteger}, #{DTime})
+    </insert>
+
+</mapper>

@@ -1,0 +1,34 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TPartMapper">
+    <resultMap id="tPartMap" type="TPart">
+        <id property="PId" column="p_id"></id>
+        <result property="PName" column="p_name"></result>
+        <result property="PRemark" column="p_remark"></result>
+        <result property="PIs" column="p_is"></result>
+    </resultMap>
+
+    <select id="queryTPartAll" resultMap="tPartMap">
+        select * from t_part
+    </select>
+
+    <delete id="deleteTPart" parameterType="int">
+        delete  from t_part where PId = #{p_id}
+    </delete>
+    
+    <select id="getTPartById" parameterType="int" resultMap="tPartMap">
+        select * from t_part where PId = #{p_id};
+    </select>
+
+    <update id="updateTPart" parameterType="TPart">
+        update t_part set p_name=#{PName},p_remark=#{PRemark},p_is=#{PIs}
+        where PId = #{p_id}
+    </update>
+
+    <insert id="addTPart" parameterType="TPart">
+        insert into t_part(p_name, p_remark, p_is) values(#{PName}, #{PRemark}, #{PIs})
+    </insert>
+
+</mapper>

@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.OutProductMapper">
+    <resultMap id="outProductMap" type="TOutProduct">
+        <id property="oid" column="o_id"></id>
+        <result property="PId" column="p_id" ></result>
+        <result property="ointeger" column="o_integer" ></result>
+        <result property="otime" column="o_time" ></result>
+        <result property="EId" column="e_id" ></result>
+        <result property="OEId" column="o_eid" ></result>
+        <result property="oremark" column="o_remark" ></result>
+    </resultMap>
+
+    <select id="queryAllOutProduct" resultMap="outProductMap">
+    select * from t_outproduct
+    </select>
+
+
+
+    <update id="deleteOutProduct" parameterType="int">
+--    没有删除
+    </update>
+
+    <update id="updateOutProduct">
+        update t_outproduct set o_integer=#{ointeger},o_time=#{otime},o_remark=#{oremark} where  o_id=#{oid}
+    </update>
+
+    <insert id="addOutProduct">
+        insert into t_outproduct(o_integer,o_time,o_remark) values(#{ointeger}, #{otime},#{oremark})
+     </insert>
+</mapper>

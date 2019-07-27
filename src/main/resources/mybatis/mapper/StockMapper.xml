@@ -1,0 +1,29 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.StockMapper">
+    <resultMap id="stockMap" type="TStock">
+        <id property="kid" column="k_id"></id>
+        <result property="PId" column="p_id" ></result>
+        <result property="sum" column="k_sum" ></result>
+
+    </resultMap>
+
+    <select id="queryAllStock" resultMap="stockMap">
+        select * from t_stock
+    </select>
+
+    <update id="deleteStock" parameterType="int">
+-- 没有删除
+    </update>
+
+    <update id="updateStock">
+        update t_stock set k_sum=#{sum} where  k_id=#{kid}
+    </update>
+
+    <insert id="addStock">
+        insert into t_stock(k_sum) values(#{sum})
+     </insert>
+
+</mapper>

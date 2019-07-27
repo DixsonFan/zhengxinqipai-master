@@ -1,0 +1,35 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TEmpMapper">
+    <resultMap id="tEmpMap" type="TEmp">
+        <id property="EId" column="e_id"></id>
+        <result property="EIs" column="e_is"></result>
+    </resultMap>
+
+    <select id="queryTEmpAll" resultMap="tEmpMap">
+        select * from t_emp
+    </select>
+
+    <delete id="deleteTEmp" parameterType="int">
+        delete  from t_emp where EId = #{e_id}
+    </delete>
+
+    <select id="getTEmpById" parameterType="int" resultMap="tEmpMap">
+        select * from t_emp where EId = #{e_id};
+    </select>
+
+    <update id="updateTEmp" parameterType="TEmp">
+        update t_emp set p_id=#{PId},e_loginname=#{ELoginname},e_psw=#{EPsw},
+                          e_img=#{EImg},e_sex=#{ESex},e_flag=#{EFlag},e_admin=#{EAdmin},
+                          e_remark=#{ERemark},e_truename=#{ETruename},e_is=#{EIs}
+        where EId = #{e_id}
+    </update>
+    <insert id="addTEmp" parameterType="TEmp">
+        insert into t_emp(p_id,e_loginname,e_psw,e_img,e_sex,e_flag,e_admin,
+                          e_remark,e_truename,e_is)
+        values(#{PId},#{ELoginname},#{EPsw},#{EImg},#{ESex},#{EFlag},#{EAdmin},#{ERemark},#{ETruename},#{EIs})
+    </insert>
+
+</mapper>

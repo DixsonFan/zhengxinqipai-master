@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TProductyearMapper">
+    <resultMap id="tProductyearMap" type="TProductyear">
+        <id property="YId" column="y_id"></id>
+        <result property="YPrice" column="y_price"></result>
+    </resultMap>
+
+    <select id="queryTProductyearAll" resultMap="tProductyearMap">
+        select * from t_productyear
+    </select>
+
+    <delete id="deleteTProductyear" parameterType="int">
+        delete  from t_productyear where YId = #{y_id}
+    </delete>
+
+    <select id="getTProductyearById" parameterType="int" resultMap="tProductyearMap">
+        select * from t_productyear where YId = #{y_id};
+    </select>
+
+    <update id="updateTProductyear" parameterType="TProductyear">
+        update t_productyear set p_id=#{PId}, y_name=#{YName},y_price=#{YPrice}
+        where YId = #{y_id}
+    </update>
+
+    <insert id="addTProductyear" parameterType="TProductyear">
+        insert into t_productyear(p_id, y_name, y_price)
+        values(#{PId}, #{YName}, #{YPrice})
+    </insert>
+
+</mapper>

@@ -1,0 +1,35 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.OrderSMXMapper">
+
+    <resultMap id="orderSMXMap" type="TOrderSMX">
+        <id property="xid" column="x_id"></id>
+        <result property="RId" column="r_id" ></result>
+        <result property="PId" column="p_id" ></result>
+        <result property="YId" column="y_id" ></result>
+        <result property="xcount" column="x_count" ></result>
+        <result property="xinteger" column="x_integer" ></result>
+        <result property="xprice" column="x_price" ></result>
+
+    </resultMap>
+
+    <select id="queryAllOrderSMX" resultMap="orderSMXMap">
+    select * from t_ordersmx
+    </select>
+
+    <update id="deleteOrdersSMX" parameterType="int">
+-- 没有删除      update t_ordersmx set r_is=0 where c_id=#{rid}
+    </update>
+
+    <update id="updateOrdersSMX" >
+        update t_ordersmx set x_count=#{xcount},x_integer=#{xinteger},xprice=#{x_price} where  x_id=#{xid}
+    </update>
+
+    <insert id="addOrdersSMX">
+        insert into t_ordersmx(x_count,x_integer, x_price) values(#{xcount}, #{xinteger},#{xprice})
+     </insert>
+
+
+</mapper>

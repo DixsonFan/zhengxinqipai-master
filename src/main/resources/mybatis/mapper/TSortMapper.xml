@@ -1,0 +1,33 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TSortMapper">
+    <resultMap id="tSortMap" type="TSort">
+        <id property="SId" column="s_id"></id>
+        <result property="SIs" column="s_is"></result>
+    </resultMap>
+
+    <select id="queryTSortAll" resultMap="tSortMap">
+        select * from t_sort
+    </select>
+
+    <delete id="deleteTSort" parameterType="int">
+        delete  from t_sort where SId = #{s_id}
+    </delete>
+
+    <select id="getTSortById" parameterType="int" resultMap="tSortMap">
+        select * from t_sort where SId = #{s_id};
+    </select>
+
+    <update id="updateTSort" parameterType="TSort">
+        update t_sort set s_name=#{SName},s_remark=#{SRemark},s_is=#{SIs}
+        where SId = #{s_id}
+    </update>
+
+    <insert id="addTSort" parameterType="TSort">
+        insert into t_sort(s_name, s_remark, s_is)
+        values(#{SName}, #{SRemark}, #{SIs})
+    </insert>
+
+</mapper>

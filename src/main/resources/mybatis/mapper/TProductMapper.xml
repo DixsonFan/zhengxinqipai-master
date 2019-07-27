@@ -1,0 +1,32 @@
+<?xml  version="1.0" encoding="UTF-8"  ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.hbue.qipai.zhengxin.mapper.TProductMapper">
+    <resultMap id="tProductMap" type="TProduct">
+        <id property="PId" column="p_id"></id>
+        <result property="PIs" column="p_is"></result>
+    </resultMap>
+
+    <select id="queryTProductAll" resultMap="tProductMap">
+        select * from t_product
+    </select>
+
+    <delete id="deleteTProduct" parameterType="int">
+        delete  from t_product where PId = #{p_id}
+    </delete>
+
+    <select id="getTProductById" parameterType="int" resultMap="tProductMap">
+        select * from t_product where PId = #{p_id};
+    </select>
+
+    <update id="updateTProduct" parameterType="TProduct">
+        update t_product set s_id=#{SId},p_name=#{PName},p_area=#{PArea},p_ml=#{PMl},p_is=#{PIs}
+        where PId = #{p_id}
+    </update>
+
+    <insert id="addTProduct" parameterType="TProduct">
+        insert into t_product(s_id,p_name, p_area, p_ml, p_is) values(#{SId}, #{PName}, #{PArea}, #{PMl}, #{PIs})
+    </insert>
+
+</mapper>
